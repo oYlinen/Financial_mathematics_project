@@ -1,4 +1,3 @@
-%Olli Ylinen K441390
 clc
 clear all
 close all
@@ -60,8 +59,8 @@ settings.indPlotSurface = 1;
 %define the loss function that optimizes the mean square error between the
 %"observed volatility surface and the model output volatility surface
 fun = @(x) lossFunction1(x, var_min_limits, var_max_limits,  model, n, S0, K, T, r, IVolSurf, settings);
-
-[param_final, fFinal, exitFlag, output, grad, hessian] = fminunc(fun, param0, OptSettings); %Matlab function to optimize the loss value of a function using gradients
+[x,fval,exitflag,output] = patternsearch(fun, param0)
+%[param_final, fFinal, exitFlag, output, grad, hessian] = fminunc(fun, param0, OptSettings); %Matlab function to optimize the loss value of a function using gradients
 
 % Results
 disp(['Starting values: ', num2str(param0)]);
